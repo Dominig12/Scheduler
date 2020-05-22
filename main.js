@@ -4,12 +4,36 @@ const todoControl = document.querySelector(".todo-control"),
       todoContainer = document.querySelector(".todo-container");
 
 let obj = [];
+function set_cookie ( name, value, exp_y, exp_m, exp_d, path, domain, secure )
+{
+  var cookie_string = name + "=" + escape ( value );
+  if(exp_y){
+    var expires = new Date ( exp_y, exp_m, exp_d );
+    cookie_string += "; expires=" + expires.toGMTString();
+  }
+  if(path)
+        cookie_string += "; path=" + escape ( path );
+  if(domain)
+        cookie_string += "; domain=" + escape ( domain );
+  if(secure)
+        cookie_string += "; secure";
+  document.cookie = cookie_string;
+}
+
+function get_cookie(cookie_name)
+{
+  var results = document.cookie.match ('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+  if(results)
+    return (unescape(results[2]));
+  else
+    return null;
+}
 
 function SaveData(){
-    localStorage.setItem("objs", JSON.stringify(obj));
+    set_cookie("objs", JSON.stringify(obj));
 }
 function LoadData(){
-    obj = JSON.parse(localStorage.getItem("objs"));
+    obj = JSON.parse(get_cookie("objs"));
 }
 
 window.onload = function(event){
