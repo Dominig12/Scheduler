@@ -30,7 +30,8 @@ function get_cookie(cookie_name)
 }
 
 function SaveData(){
-    set_cookie("objs", JSON.stringify(obj));
+    var expires = new Date();
+    set_cookie("objs", JSON.stringify(obj),expires.getFullYear(), expires.getMonth(), expires.getDay()+31);
 }
 function LoadData(){
     obj = JSON.parse(get_cookie("objs"));
