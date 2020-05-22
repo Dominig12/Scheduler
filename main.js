@@ -23,7 +23,7 @@ function LoadData(){
 }
 
 const render = () =>{
-    SaveData()
+    SaveData();
     todoCompleted.textContent = "";
     todoList.textContent = "";
     obj.forEach((element)=>{
