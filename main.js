@@ -4,7 +4,6 @@ const todoControl = document.querySelector(".todo-control"),
       todoContainer = document.querySelector(".todo-container");
 
 let obj = [];
-LoadData();
 
 function SaveData(){
     localStorage.setItem("objs", JSON.stringify(obj));
@@ -13,10 +12,16 @@ function LoadData(){
     obj = JSON.parse(localStorage.getItem("objs"));
 }
 
+window.onload = function(event){
+    this.LoadData();
+};
+
 const render = () =>{
     SaveData();
     todoCompleted.textContent = "";
     todoList.textContent = "";
+    if(obj == null)
+        obj = [];
     obj.forEach((element)=>{
         const li = document.createElement("li");
         li.classList.add("todo-item");
