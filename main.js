@@ -13,7 +13,8 @@ function LoadData(){
 }
 
 window.onload = function(event){
-    this.LoadData();
+    LoadData();
+    render();
 };
 
 const render = () =>{
@@ -76,4 +77,3 @@ todoContainer.addEventListener("click", (event) => {
     }
     render();
 })
-render();
