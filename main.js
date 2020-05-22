@@ -3,16 +3,7 @@ const todoControl = document.querySelector(".todo-control"),
       todoCompleted = document.querySelector(".todo-completed"),
       todoContainer = document.querySelector(".todo-container");
 
-let obj = [
-    {
-        value : "Сварить кофе",
-        completed : false
-    },
-    {
-        value : "Помыть посуду",
-        completed : true
-    }
-]
+let obj = [];
 LoadData();
 
 function SaveData(){
